@@ -2,7 +2,7 @@
  credit to YouTube channel "Molly Rocket" for demonstrating these comparisons
 
  Running for benchmarks
- To run a benchmark test, run 
+ To run a benchmark test, run
  ```
  python3 scripts/run <source> <number of times>
 ```
