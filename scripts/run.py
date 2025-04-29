@@ -59,7 +59,5 @@ else:
     times_to_run = default_times_to_run
 
 timeItArgs = TimeItArguments(argument, times_to_run)
-command = CommandWrapper(
-    timeItArgs
-)  # TODO: make the number of times to run a configurable parameter
+command = CommandWrapper(timeItArgs)
 command.run()
