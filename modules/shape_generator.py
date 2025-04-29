@@ -4,15 +4,12 @@ from modules import demo
 def compute_total_area():
     shapes = create_shapes()
     return sum(shape.area() for shape in shapes)
-    total = 0.0
-    for shape in shapes:
-        total += shape.area()
-    return total
 
 
 def create_shapes():
     shapes = []
-    for i in range(500000):
+    number_of_shapes = 500000
+    for i in range(number_of_shapes):
         if i % 2 == 0:
             shapes.append(demo.Circle(i % 100 + 1))
         else:
