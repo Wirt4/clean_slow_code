@@ -1,5 +1,7 @@
 from modules import demo
 
+NUMBER_OF_SHAPES = 500000
+
 
 def compute_total_area():
     shapes = create_shapes()
@@ -8,8 +10,7 @@ def compute_total_area():
 
 def create_shapes():
     shapes = []
-    number_of_shapes = 500000
-    for i in range(number_of_shapes):
+    for i in range(NUMBER_OF_SHAPES):
         if i % 2 == 0:
             shapes.append(demo.Circle(i % 100 + 1))
         else:
