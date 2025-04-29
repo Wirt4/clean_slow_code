@@ -3,6 +3,7 @@ from modules import demo
 
 def compute_total_area():
     shapes = create_shapes()
+    return sum(shape.area() for shape in shapes)
     total = 0.0
     for shape in shapes:
         total += shape.area()
