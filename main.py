@@ -1,4 +1,6 @@
 import cProfile
-from modules import clean
+from modules import demo
 
-print("imported clean")
+demo.compute_total_area(demo.create_shapes())
+
+print("imported demo")
