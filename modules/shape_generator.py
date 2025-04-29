@@ -9,13 +9,17 @@ def compute_total_area(module_name):
     return sum(shape.area() for shape in shapes)
 
 
+def side_from_index(index):
+    return index % 100 + 1
+
+
 def create_clean_shapes():
     shapes = []
     for i in range(NUMBER_OF_SHAPES):
         if i % 2 == 0:
-            shapes.append(clean.Circle(i % 100 + 1))
+            shapes.append(clean.Circle(side_from_index(i)))
         else:
-            shapes.append(clean.Square(i % 100 + 1))
+            shapes.append(clean.Square(side_from_index(i)))
         return shapes
 
 
@@ -23,9 +27,9 @@ def create_optimized_shapes():
     shapes = []
     for i in range(NUMBER_OF_SHAPES):
         if i % 2 == 0:
-            shapes.append(clean.Circle(i % 100 + 1))
+            shapes.append(clean.Circle(side_from_index(i)))
         else:
-            shapes.append(clean.Square(i % 100 + 1))
+            shapes.append(clean.Square(side_from_index(i)))
     return shapes
 
 
