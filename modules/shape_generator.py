@@ -1,5 +1,6 @@
 from modules import demo
 from modules import clean
+from modules import wrapper
 
 NUMBER_OF_SHAPES = 500000
 
@@ -13,29 +14,12 @@ def side_from_index(index):
     return index % 100 + 1
 
 
-def create_clean_shapes():
-    shapes = []
-    for i in range(NUMBER_OF_SHAPES):
-        if i % 2 == 0:
-            shapes.append(clean.Circle(side_from_index(i)))
-        else:
-            shapes.append(clean.Square(side_from_index(i)))
-        return shapes
-
-
-def create_optimized_shapes():
-    shapes = []
-    for i in range(NUMBER_OF_SHAPES):
-        if i % 2 == 0:
-            shapes.append(clean.Circle(side_from_index(i)))
-        else:
-            shapes.append(clean.Square(side_from_index(i)))
-    return shapes
-
-
 def create_shapes(module_name):
-    if module_name == "clean":
-        shapes = create_clean_shapes()
-    else:
-        shapes = create_optimized_shapes()
+    shapes = []
+    w = wrapper.Wrapper(module_name)
+    for i in range(NUMBER_OF_SHAPES):
+        if i % 2 == 0:
+            shapes.append(w.Circle(side_from_index(i)))
+        else:
+            shapes.append(w.Square(side_from_index(i)))
     return shapes
