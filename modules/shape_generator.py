@@ -1,7 +1,7 @@
 from modules import demo
 
 
-def compute_total_area(shapes):
+def compute_total_area():
     s = create_shapes()
     total = 0.0
     for shape in s:
