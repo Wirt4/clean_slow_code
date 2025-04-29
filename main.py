@@ -1,4 +1,4 @@
 import cProfile
-from modules import demo
+from modules import shape_generator
 
-cProfile.run("demo.compute_total_area(demo.create_shapes())")
+cProfile.run("shape_generator.compute_total_area(shape_generator.create_shapes())")
