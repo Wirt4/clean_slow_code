@@ -29,3 +29,15 @@ class Triangle(Shape):
 
     def area(self):
         return self.width * self.height / 2
+
+
+"""
+Listing 23
+"""
+
+
+def compute_total_area_polymorphism(shape_count, shapes):
+    accumulator = 0.0
+    for shape_index in range(shape_count):
+        accumulator += shapes[shape_index].area()
+    return accumulator
