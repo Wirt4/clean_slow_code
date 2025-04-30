@@ -30,10 +30,16 @@ def random_shape_struct() -> ShapeStruct:
             "height": random_side(),
         }
     elif shape == "circle":
-        return {"type": "circle", "radius": random_radius()}
+        radius = random_radius()
+        return {
+            "type": "circle",
+            "radius": radius,
+            "width": 2 * radius,
+            "height": 2 * radius,
+        }
     else:
         return {
             "type": "triangle",
-            "base": random_side(),
+            "width": random_side(),
             "height": random_side(),
         }

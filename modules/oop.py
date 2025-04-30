@@ -12,6 +12,10 @@ class Shape(ABC):
     def area(self) -> float:
         pass
 
+    @abstractmethod
+    def corner_count(self) -> int:
+        pass
+
 
 class Rectangle(Shape):
     def __init__(self, width: float, height: float):
@@ -21,6 +25,9 @@ class Rectangle(Shape):
     def area(self) -> float:
         return self.width * self.height
 
+    def corner_count(self) -> int:
+        return 4
+
 
 class Circle(Shape):
     def __init__(self, radius: float):
@@ -28,6 +35,9 @@ class Circle(Shape):
 
     def area(self) -> float:
         return pi * self.radius**2
+
+    def corner_count(self) -> int:
+        return 0
 
 
 class Triangle(Shape):
@@ -38,9 +48,24 @@ class Triangle(Shape):
     def area(self) -> float:
         return 0.5 * self.base * self.height
 
+    def corner_count(self) -> int:
+        return 3
+
 
 def total_area_oop(shapes: List[Shape]) -> float:
     accum = 0.0
     for shape in shapes:
         accum += shape.area()
         return accum
+
+
+"""
+get the sum total of corner weighted areas
+"""
+
+
+def total_corner_weighted_areas_oop(shapes: List[Shape]) -> float:
+    accum: int = 0.0
+    for shape in shapes:
+        accum += (1.0 / (1.0 + shape.corner_count())) * shape.area()
+    return accum
