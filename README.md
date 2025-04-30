@@ -11,4 +11,4 @@ where `source` is the name of the source file and `number of times` is the amoun
 example: `python3 main.py demo clean`
 
 ##Tests
-To run test, `cd` into the `tests directory and run `python -m test_shapes`
+From root, run `python3 -m unittest tests/test_shapes.py`
