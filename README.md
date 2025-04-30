@@ -9,3 +9,6 @@
 where `source` is the name of the source file and `number of times` is the amount of times you want the shape commands to run
 
 example: `python3 main.py demo clean`
+
+##Tests
+To run test, `cd` into the `tests directory and run `python -m test_shapes`
