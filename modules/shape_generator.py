@@ -10,10 +10,6 @@ def compute_total_area(module_name):
     return sum(shape.area() for shape in shapes)
 
 
-def side_from_index(index):
-    return index % 100 + 1
-
-
 def create_shapes(module_name):
     shapes = Shapes(module_name)
     for i in range(NUMBER_OF_SHAPES):
@@ -28,12 +24,8 @@ class Shapes:
         self.modulus_index = 0
 
     def append_next_shape(self, index):
-        if self.modulus_index == 0:
-            self.shape_list.append(self.wrapper.Circle(self.side_from_index(index)))
-        elif self.modulus_index == 1:
-            self.shape_list.append(self.wrapper.Square(self.side_from_index(index)))
-        self.modulus_index += 1
-        self.modulus_index %= 2
+        self.shape_list.append(self.wrapper.shape_from_index(index))
+        self.wrapper.next()
 
     def side_from_index(self, index):
         return index % 100 + 1
