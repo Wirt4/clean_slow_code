@@ -48,16 +48,6 @@ def total_area_oop(shapes: List[Shape]) -> float:
     return accum
 
 
-def random_shape_oop() -> Shape:
-    shape = random.choice(["rectangle", "circle", "triangle"])
-    if shape == "rectangle":
-        return Rectangle(random.uniform(1.0, 10.0), random.uniform(1.0, 10.0))
-    elif shape == "circle":
-        return Circle(random.uniform(1.0, 5.0))
-    else:
-        return Triangle(random.uniform(1.0, 10.0), random.uniform(1.0, 10.0))
-
-
 """
 Old-fashioned flat struct version
 """
@@ -74,7 +64,13 @@ class CircleStruct(TypedDict):
     radius: float
 
 
-ShapeStruct = Union[RectangleStruct, CircleStruct]
+class TriangleStruct(TypedDict):
+    type: Literal["triangle"]
+    base: float
+    height: float
+
+
+ShapeStruct = Union[RectangleStruct, CircleStruct, TriangleStruct]
 
 
 def area(shape: ShapeStruct) -> float:
@@ -93,6 +89,21 @@ def total_area_struct(shapes: List[ShapeStruct]) -> float:
     for shape in shapes:
         accum += area(shape)
     return accum
+
+
+"""
+Random shape generators
+"""
+
+
+def random_shape_oop() -> Shape:
+    shape: str = random.choice(["rectangle", "circle", "triangle"])
+    if shape == "rectangle":
+        return Rectangle(random.uniform(1.0, 10.0), random.uniform(1.0, 10.0))
+    elif shape == "circle":
+        return Circle(random.uniform(1.0, 5.0))
+    else:
+        return Triangle(random.uniform(1.0, 10.0), random.uniform(1.0, 10.0))
 
 
 def random_shape_struct() -> ShapeStruct:
