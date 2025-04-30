@@ -3,6 +3,7 @@ import cProfile
 import math
 from typing import List, Literal, TypedDict, Union
 from abc import ABC, abstractmethod
+from modules import profile_methods
 
 """
 Object-Oriented, Clean Version
@@ -96,14 +97,22 @@ Random shape generators
 """
 
 
+def random_side() -> float:
+    return random.uniform(1.0, 10.0)
+
+
+def random_radius() -> float:
+    return random.uniform(1.0, 5.0)
+
+
 def random_shape_oop() -> Shape:
     shape: str = random.choice(["rectangle", "circle", "triangle"])
     if shape == "rectangle":
-        return Rectangle(random.uniform(1.0, 10.0), random.uniform(1.0, 10.0))
+        return Rectangle(random_side(), random_side())
     elif shape == "circle":
-        return Circle(random.uniform(1.0, 5.0))
+        return Circle(random_radius())
     else:
-        return Triangle(random.uniform(1.0, 10.0), random.uniform(1.0, 10.0))
+        return Triangle(random_side(), random_side())
 
 
 def random_shape_struct() -> ShapeStruct:
@@ -111,16 +120,16 @@ def random_shape_struct() -> ShapeStruct:
     if shape == "rectangle":
         return {
             "type": "rectangle",
-            "width": random.uniform(1.0, 10.0),
-            "height": random.uniform(1.0, 10.0),
+            "width": random_side(),
+            "height": random_side(),
         }
     elif shape == "circle":
-        return {"type": "circle", "radius": random.uniform(1.0, 5.0)}
+        return {"type": "circle", "radius": random_radius()}
     else:
         return {
             "type": "triangle",
-            "base": random.uniform(1.0, 10),
-            "height": random.uniform(1.0, 10.0),
+            "base": random_side(),
+            "height": random_side(),
         }
 
 
@@ -129,30 +138,10 @@ Profiling functions
 """
 
 
-class ProfileFunctions:
-    shape_list_size = 100000
-
-    @staticmethod
-    def run_oop():
-        shapes = [random_shape_oop() for _ in range(ProfileFunctions.shape_list_size)]
-        total_area_oop(shapes)
-
-    @staticmethod
-    def run_struct():
-        shapes = [
-            random_shape_struct() for _ in range(ProfileFunctions.shape_list_size)
-        ]
-        total_area_struct(shapes)
-
-    @staticmethod
-    def make_list(shape_lambda):
-        return [shape_lambda() for _ in range(ProfileFunctions.shape_list_size)]
-
-
 # ----- Main entry point -----
 if __name__ == "__main__":
     print("OOP Version:")
-    cProfile.run("ProfileFunctions.run_oop()", sort="cumtime")
+    cProfile.run("profile_methods.ProfileFunctions.run_oop()", sort="cumtime")
 
     print("\nFlat Struct Version:")
-    cProfile.run("ProfileFunctions.run_struct()", sort="cumtime")
+    cProfile.run("profile_methods.ProfileFunctions.run_struct()", sort="cumtime")
