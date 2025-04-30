@@ -22,10 +22,10 @@ class Square(Shape):
         return self.side * self.side
 
 
-class Triangle:
+class Triangle(Shape):
     def __init__(self, width, height):
         self.width = width
         self.height = height
 
     def area(self):
-        return 6
+        return self.width * self.height / 2
