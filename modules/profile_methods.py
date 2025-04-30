@@ -1,23 +1,17 @@
-from modules import random_shapes
+from modules.random_shapes import random_shape_oop, random_shape_struct
 from modules.oop import total_area_oop, Shape
 from modules.struct import total_area_struct, ShapeStruct
 
+shape_list_size: int = 100000
 
-class ProfileFunctions:
-    shape_list_size: int = 100000
 
-    @staticmethod
-    def run_oop() -> None:
-        shapes: list[Shape] = ProfileFunctions.make_list(random_shapes.random_shape_oop)
-        total_area_oop(shapes)
+def make_list(shape_lambda):
+    return [shape_lambda() for _ in range(shape_list_size)]
 
-    @staticmethod
-    def run_struct() -> None:
-        shapes: list[ShapeStruct] = ProfileFunctions.make_list(
-            random_shapes.random_shape_struct
-        )
-        total_area_struct(shapes)
 
-    @staticmethod
-    def make_list(shape_lambda):
-        return [shape_lambda() for _ in range(ProfileFunctions.shape_list_size)]
+def run_oop() -> None:
+    total_area_oop(make_list(random_shape_oop))
+
+
+def run_struct() -> None:
+    total_area_struct(make_list(random_shape_struct))
