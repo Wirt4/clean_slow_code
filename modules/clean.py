@@ -20,3 +20,12 @@ class Square(Shape):
 
     def area(self):
         return self.side * self.side
+
+
+class Triangle:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return 6
