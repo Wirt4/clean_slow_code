@@ -29,8 +29,11 @@ class Shapes:
 
     def append_next_shape(self, index):
         if self.modulus_index == 0:
-            self.shape_list.append(self.wrapper.Circle(side_from_index(index)))
+            self.shape_list.append(self.wrapper.Circle(self.side_from_index(index)))
         elif self.modulus_index == 1:
-            self.shape_list.append(self.wrapper.Square(side_from_index(index)))
+            self.shape_list.append(self.wrapper.Square(self.side_from_index(index)))
         self.modulus_index += 1
         self.modulus_index %= 2
+
+    def side_from_index(self, index):
+        return index % 100 + 1
