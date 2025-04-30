@@ -27,3 +27,5 @@ class TestShapeMethods(unittest.TestCase):
         height = 4
         cleanTriangle = clean.Triangle(base, height)
         self.assertEqual(cleanTriangle.area(), expected)
+        optimizedTriangle = demo.Triangle(base, height)
+        self.assertEqual(optimizedTriangle.area(), expected)
