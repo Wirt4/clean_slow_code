@@ -113,21 +113,35 @@ def random_shape_struct() -> ShapeStruct:
         }
 
 
-# ----- Profiling Functions -----
-def run_oop():
-    shapes = [random_shape_oop() for _ in range(100000)]
-    total_area_oop(shapes)
+"""
+Profiling functions
+"""
 
 
-def run_struct():
-    shapes = [random_shape_struct() for _ in range(100000)]
-    total_area_struct(shapes)
+class ProfileFunctions:
+    shape_list_size = 100000
+
+    @staticmethod
+    def run_oop():
+        shapes = [random_shape_oop() for _ in range(ProfileFunctions.shape_list_size)]
+        total_area_oop(shapes)
+
+    @staticmethod
+    def run_struct():
+        shapes = [
+            random_shape_struct() for _ in range(ProfileFunctions.shape_list_size)
+        ]
+        total_area_struct(shapes)
+
+    @staticmethod
+    def make_list(shape_lambda):
+        return [shape_lambda() for _ in range(ProfileFunctions.shape_list_size)]
 
 
 # ----- Main entry point -----
 if __name__ == "__main__":
     print("OOP Version:")
-    cProfile.run("run_oop()", sort="cumtime")
+    cProfile.run("ProfileFunctions.run_oop()", sort="cumtime")
 
     print("\nFlat Struct Version:")
-    cProfile.run("run_struct()", sort="cumtime")
+    cProfile.run("ProfileFunctions.run_struct()", sort="cumtime")
