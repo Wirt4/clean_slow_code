@@ -16,15 +16,8 @@ def side_from_index(index):
 
 def create_shapes(module_name):
     shapes = Shapes(module_name)
-    shape_wrapper = wrapper.Wrapper(module_name)
-    j = 0
     for i in range(NUMBER_OF_SHAPES):
-        if j == 0:
-            shapes.shape_list.append(shape_wrapper.Circle(side_from_index(i)))
-        elif j == 1:
-            shapes.shape_list.append(shape_wrapper.Square(side_from_index(i)))
-        j += 1
-        j %= 2
+        shapes.append_next_shape(i)
     return shapes.shape_list
 
 
@@ -32,3 +25,12 @@ class Shapes:
     def __init__(self, module_name):
         self.wrapper = wrapper.Wrapper(module_name)
         self.shape_list = []
+        self.modulus_index = 0
+
+    def append_next_shape(self, index):
+        if self.modulus_index == 0:
+            self.shape_list.append(self.wrapper.Circle(side_from_index(index)))
+        elif self.modulus_index == 1:
+            self.shape_list.append(self.wrapper.Square(side_from_index(index)))
+        self.modulus_index += 1
+        self.modulus_index %= 2
