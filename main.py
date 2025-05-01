@@ -1,7 +1,13 @@
 import cProfile
-import sys
-from modules import shape_generator
+from modules.profile_methods import run_oop, run_struct
 
-module_name = sys.argv[1]
-print("profiling", module_name)
-cProfile.run("shape_generator.compute_total_area('{}')".format(module_name))
+"""
+Main entry ProfileFunctions
+runs the profiles for the clean object-oriented functions and for the "dirty" old fashioned struct functions
+"""
+if __name__ == "__main__":
+    print("OOP Version:")
+    cProfile.run("run_oop()", sort="cumtime")
+
+    print("\nFlat Struct Version:")
+    cProfile.run("run_struct()", sort="cumtime")

@@ -1,14 +1,8 @@
 # clean_slow_code
  credit to YouTube channel "Molly Rocket" for demonstrating these comparisons
 
- Running for profiling
- To run a benchmark test, run
- ```
- python3 main.py <source>
-```
-where `source` is the name of the source file and `number of times` is the amount of times you want the shape commands to run
+The point here is to compare equivalent lists of OOP shapes versus struct-style shapes to evaluate the claims that clean code slows performance, specifically in a scripting language like Python.
 
-example: `python3 main.py demo clean`
+There are two summations here, one of the area of geometric shapes, rectangle, ccircle and triangle, and one of an arbitrary corner weighted area.
 
-##Tests
-From root, run `python3 -m unittest tests/test_shapes.py`
+The struct is more performant than the OOP approach, but by a much slimmer margin than expected.
