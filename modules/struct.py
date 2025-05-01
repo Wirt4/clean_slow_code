@@ -61,11 +61,7 @@ def total_area_struct(shapes: List[ShapeStruct]) -> float:
 coeffient_table = {"rectangle": 1.0, "triangle": 0.5, "circle": pi}
 
 
-def get_area_union(shape: ShapeStruct):
-    return coeffient_table[shape["type"]] * shape["width"] * shape["height"]
-
-
 def total_corner_weighted_area_struct(shapes: List[ShapeStruct]) -> float:
     accum = 0.0
     for shape in shapes:
-        accum += get_area_union(shape)
+        accum += coeffient_table[shape["type"]] * shape["width"] * shape["height"]

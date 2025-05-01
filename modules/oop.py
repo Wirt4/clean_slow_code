@@ -10,11 +10,11 @@ Object-Oriented, Clean Version
 class Shape(ABC):
     @abstractmethod
     def area(self) -> float:
-        pass
+        raise ValueError("not implemented")
 
     @abstractmethod
     def corner_count(self) -> int:
-        pass
+        raise ValueError("not implemented")
 
 
 class Rectangle(Shape):
