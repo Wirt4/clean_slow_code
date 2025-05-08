@@ -1,0 +1,4 @@
+OOP Version:
+         2865973 function calls in 0.486 seconds
+Flat Struct Version:
+         2567795 function calls in 0.406 seconds
