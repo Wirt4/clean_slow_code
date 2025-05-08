@@ -37,3 +37,20 @@ class TestOOPMethods(unittest.TestCase):
         """
         shape_list = [oop.Circle(1), oop.Rectangle(1, 1), oop.Triangle(1, 1)]
         self.assertEqual(oop.total_area(shape_list), math.pi + 1.5)
+
+    def test_total_area_in_groups_of_4(self):
+        """
+        Confirms the 4-batch version gets the same results as the regular version.
+        The only difference, if any, should be the number of execution cycles.
+        """
+        shape_list = [
+            oop.Circle(1),
+            oop.Rectangle(1, 1),
+            oop.Triangle(1, 1),
+            oop.Circle(1),
+            oop.Rectangle(1, 1),
+            oop.Triangle(1, 1),
+        ]
+        self.assertEqual(
+            oop.total_area_in_groups_of_4(shape_list), oop.total_area(shape_list)
+        )

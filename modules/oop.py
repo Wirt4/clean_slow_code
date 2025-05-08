@@ -106,4 +106,22 @@ def total_area(shapes: List[Shape]) -> float:
     """
     Returns the sum total area of all shapes in the list
     """
+    sum_total: float = 0.0
+    for i in range(len(shapes)):
+        sum_total += shapes[i].area()
+    return sum_total
     return sum(shape.area() for shape in shapes)
+
+
+def total_area_in_groups_of_4(shapes: List[Shape]) -> float:
+    """
+    Returns the sum total area of all shapes in the list.
+    The iteration is batched in groups of 4
+    """
+    sum_total: float = 0.0
+    for i in range(0, len(shapes), 4):
+        sum_total += 0 if i >= len(shapes) else shapes[i].area()
+        sum_total += 0 if i + 1 >= len(shapes) else shapes[i + 1].area()
+        sum_total += 0 if i + 2 >= len(shapes) else shapes[i + 2].area()
+        sum_total += 0 if i + 3 >= len(shapes) else shapes[i + 3].area()
+    return sum_total
