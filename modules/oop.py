@@ -106,7 +106,4 @@ def total_area(shapes: List[Shape]) -> float:
     """
     Returns the sum total area of all shapes in the list
     """
-    sum_total = 0.0
-    for shape in shapes:
-        sum_total += shape.area()
-    return sum_total
+    return sum(shape.area() for shape in shapes)
