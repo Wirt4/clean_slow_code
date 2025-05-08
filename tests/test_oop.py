@@ -10,9 +10,7 @@ class TestOOPShapes(unittest.TestCase):
         Confirms the area of the circle calculates correctly
         """
         radius = 1.75
-        expected_area = math.pi * radius**2
-        oop_circle = oop.Circle(radius)
-        self.assertEqual(oop_circle.area(), expected_area)
+        self.assertEqual(oop.Circle(radius).area(), math.pi * radius**2)
 
     def test_rectangle_area(self):
         """
@@ -20,5 +18,12 @@ class TestOOPShapes(unittest.TestCase):
         """
         side_a = 40
         side_b = 11
-        expected_area = 440
-        self.assertEqual(oop.Rectangle(side_a, side_b).area(), expected_area)
+        self.assertEqual(oop.Rectangle(side_a, side_b).area(), side_a * side_b)
+
+    def test_triangle_area(self):
+        """
+        Confirms the rendered area of the triangle object
+        """
+        base = 10
+        height = 5
+        self.assertEqual(oop.Triangle(base, height).area(), base * height / 2.0)
