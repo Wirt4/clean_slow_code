@@ -92,16 +92,6 @@ class Triangle(Shape):
         return 3
 
 
-def total_area_oop(shapes: List[Shape]) -> float:
-    """
-    gets the sum total of shape areas
-    """
-    accum: float = 0.0
-    for shape in shapes:
-        accum += shape.area()
-        return accum
-
-
 def total_corner_weighted_areas_oop(shapes: List[Shape]) -> float:
     """
     get the sum total of corner weighted areas where the weighted area is 1 + (number of corners* area)
@@ -110,3 +100,13 @@ def total_corner_weighted_areas_oop(shapes: List[Shape]) -> float:
     for shape in shapes:
         accum += (1.0 / (1.0 + shape.corner_count())) * shape.area()
     return accum
+
+
+def total_area(shapes: List[Shape]) -> float:
+    """
+    Returns the sum total area of all shapes in the list
+    """
+    sum_total = 0.0
+    for shape in shapes:
+        sum_total += shape.area()
+    return sum_total
