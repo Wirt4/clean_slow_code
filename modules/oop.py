@@ -92,13 +92,13 @@ class Triangle(Shape):
         return 3
 
 
-def total_corner_weighted_areas_oop(shapes: List[Shape]) -> float:
+def total_corner_area(shapes: List[Shape]) -> float:
     """
     get the sum total of corner weighted areas where the weighted area is 1 + (number of corners* area)
     """
-    accum: int = 0.0
+    accum: float = 0.0
     for shape in shapes:
-        accum += (1.0 / (1.0 + shape.corner_count())) * shape.area()
+        accum += 1.0 / (1.0 + shape.corner_count() * shape.area())
     return accum
 
 
@@ -112,7 +112,29 @@ def total_area(shapes: List[Shape]) -> float:
     return sum_total
 
 
-def total_area_in_groups_of_4(shapes: List[Shape]) -> float:
+def total_corner_area_in_groups_of_four(shapes: List[Shape]) -> float:
+    """
+    Returns the sum total area of all shapes in the list.
+    The iteration is batched in groups of 4
+    """
+    accum_0: float = 0.0
+    accum_1: float = 0.0
+    accum_2: float = 0.0
+    accum_3: float = 0.0
+    for i in range(0, len(shapes), 4):
+        if i < len(shapes):
+            accum_0 += 1.0 / (1.0 + shapes[i].corner_count() * shapes[i].area())
+        if i + 1 < len(shapes):
+            accum_1 += 1.0 / (1.0 + shapes[i + 1].corner_count() * shapes[i + 1].area())
+        if i + 2 < len(shapes):
+            accum_2 += 1.0 / (1.0 + shapes[i + 2].corner_count() * shapes[i + 2].area())
+        if i + 3 < len(shapes):
+            accum_3 += 1.0 / (1.0 + shapes[i + 3].corner_count() * shapes[i + 3].area())
+
+    return accum_0 + accum_1 + accum_2 + accum_3
+
+
+def total_area_in_groups_of_four(shapes: List[Shape]) -> float:
     """
     Returns the sum total area of all shapes in the list.
     The iteration is batched in groups of 4

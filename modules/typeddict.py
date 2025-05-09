@@ -19,11 +19,11 @@ class ShapeUnion(TypedDict):
 
 def get_area(shape: ShapeUnion) -> float:
     if shape["shape_type"] == ShapeType.CIRCLE:
-        return pi * (shape["width"] / 2) ** 2
+        return shape["width"] * shape["height"] * pi * 0.25
     if shape["shape_type"] == ShapeType.RECTANGLE:
         return shape["width"] * shape["height"]
     if shape["shape_type"] == ShapeType.TRIANGLE:
-        return shape["width"] * shape["height"] / 2
+        return shape["width"] * shape["height"] * 0.5
     raise ValueError("invalid shape type")
 
 
