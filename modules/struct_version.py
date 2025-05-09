@@ -117,10 +117,13 @@ def total_area_in_groups_of_4(shapes: List[Shape]) -> float:
     Returns the sum total area of all shapes in the list.
     The iteration is batched in groups of 4
     """
-    sum_total: float = 0.0
+    accum_0: float = 0.0
+    accum_1: float = 0.0
+    accum_2: float = 0.0
+    accum_3: float = 0.0
     for i in range(0, len(shapes), 4):
-        sum_total += 0 if i >= len(shapes) else shapes[i].area()
-        sum_total += 0 if i + 1 >= len(shapes) else shapes[i + 1].area()
-        sum_total += 0 if i + 2 >= len(shapes) else shapes[i + 2].area()
-        sum_total += 0 if i + 3 >= len(shapes) else shapes[i + 3].area()
-    return sum_total
+        accum_0 += 0 if i >= len(shapes) else shapes[i].area()
+        accum_1 += 0 if i + 1 >= len(shapes) else shapes[i + 1].area()
+        accum_2 += 0 if i + 2 >= len(shapes) else shapes[i + 2].area()
+        accum_3 += 0 if i + 3 >= len(shapes) else shapes[i + 3].area()
+    return accum_0 + accum_1 + accum_2 + accum_3
