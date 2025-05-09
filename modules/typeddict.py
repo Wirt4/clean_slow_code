@@ -18,7 +18,7 @@ class ShapeUnion(TypedDict):
 
 
 def get_area(shape: ShapeUnion):
-    return -1
+    return pi
 
 
 class Shape(ABC):
