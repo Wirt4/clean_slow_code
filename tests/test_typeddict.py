@@ -28,3 +28,15 @@ class TestTypedDictMethods(unittest.TestCase):
             "height": 11,
         }
         self.assertEqual(get_area(rectangle), 440)
+
+    def test_get_area_of_triangle(self):
+        """
+        confirm the branching "get_area" returns the correct rectangle area.
+        Use the same value from the oop test
+        """
+        triangle: ShapeUnion = {
+            "shape_type": ShapeType.TRIANGLE,
+            "width": 10,
+            "height": 5,
+        }
+        self.assertEqual(get_area(triangle), 25)
