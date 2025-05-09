@@ -1,7 +1,7 @@
 from typing import List
 
 from modules import oop, typeddict
-from modules.random_shapes import random_shape_oop
+from modules.random_shapes import random_shape_oop, random_shape_typeddict
 
 shape_list_size: int = 100000
 
@@ -27,6 +27,6 @@ def run_typeddict() -> None:
     """
     Runs the batched and un-batched versions of total area
     """
-    shape_list: List[typeddict.Shape] = make_list(random_shape_oop)
+    shape_list: List[typeddict.ShapeUnion] = make_list(random_shape_typeddict)
     typeddict.total_area(shape_list)
     typeddict.total_area_in_groups_of_4(shape_list)
