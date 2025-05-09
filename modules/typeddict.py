@@ -17,6 +17,10 @@ class ShapeUnion(TypedDict):
     height: float
 
 
+def get_area(shape: ShapeUnion):
+    return -1
+
+
 class Shape(ABC):
     """
     Abstract class for various polygon shapes, not for direct implementation
