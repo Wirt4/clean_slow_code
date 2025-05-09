@@ -1,6 +1,6 @@
 import cProfile
 
-from modules.profile_methods import run_oop
+from modules.profile_methods import run_oop, run_struct
 
 """
 Main entry ProfileFunctions
@@ -9,3 +9,5 @@ runs the profiles for the clean object-oriented functions and for the "dirty" ol
 if __name__ == "__main__":
     print("OOP Version:")
     cProfile.run("run_oop()", sort="cumtime")
+    print("Struct Version:")
+    cProfile.run("run_struct()", sort="cumtime")
