@@ -20,10 +20,11 @@ def random_shape_oop() -> Shape:
     shape: ShapeType = random_shape_type()
     if shape == ShapeType.RECTANGLE:
         return Rectangle(random_side(), random_side())
-    elif shape == ShapeType.CIRCLE:
+    if shape == ShapeType.CIRCLE:
         return Circle(random_radius())
-    else:
+    if shape == ShapeType.TRIANGLE:
         return Triangle(random_side(), random_side())
+    raise ValueError("Invalid Shape Type")
 
 
 def random_shape_typeddict() -> ShapeUnion:
@@ -34,16 +35,17 @@ def random_shape_typeddict() -> ShapeUnion:
             "width": random_side(),
             "height": random_side(),
         }
-    elif shape == ShapeType.CIRCLE:
+    if shape == ShapeType.CIRCLE:
         radius: float = random_radius()
         return {
             "shape_type": ShapeType.CIRCLE,
             "width": 2 * radius,
             "height": 2 * radius,
         }
-    else:
+    if shape == ShapeType.TRIANGLE:
         return {
             "shape_type": ShapeType.TRIANGLE,
             "width": random_side(),
             "height": random_side(),
         }
+    raise ValueError("Invalid Shape Type")
