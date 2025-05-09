@@ -18,7 +18,9 @@ class ShapeUnion(TypedDict):
 
 
 def get_area(shape: ShapeUnion):
-    return pi * (shape["width"] / 2.0) ** 2
+    if shape["shape_type"] == ShapeType.CIRCLE:
+        return pi * (shape["width"] / 2.0) ** 2
+    return shape["width"] * shape["height"]
 
 
 class Shape(ABC):
