@@ -1,6 +1,7 @@
-from modules.oop import Shape, Rectangle, Circle, Triangle
-from modules.struct import ShapeStruct
 import random
+
+from modules.oop import Circle, Rectangle, Shape, Triangle
+from modules.struct import ShapeStruct
 
 
 def random_side() -> float:

@@ -1,13 +1,12 @@
 # clean_slow_code
- credit to YouTube channel "Molly Rocket" for demonstrating these comparisons
 
-The point here is to compare equivalent lists of OOP shapes versus struct-style shapes to evaluate the claims that clean code slows performance, specifically in a scripting language like Python.
+## Hypothesis
+Structuring operations based on lookup tables and switch-like blocks will be 2 to 10 times as performant as structuring the code with class methods and polymorphism. This is based on the demo and article at <https://www.computerenhance.com/p/clean-code-horrible-performance>
 
-There are two summations here, one of the area of geometric shapes, rectangle, ccircle and triangle, and one of an arbitrary corner weighted area.
+Casey Muratori's C++ demonstration claims a 10x speed improvement when ditching polymorphism and other 'Clean Code' practices. If polymorphism or Clean Code are inherently poor concepts, then there should be a similar(if not as dramatic) difference in benchmark performance when applied to a different language, even a high-level scripting language like Python.
 
-<<<<<<< Updated upstream
 The struct is more performant than the OOP approach, but by a much slimmer margin than expected.
-=======
+
 ## Procedure
 There are two scripts:`class_hiearcy.py` and `struct_like.py`. Each reads a list of shape types and dimensions, calculates the sum of the total area, and the sum of the total corner weighted area.
 
@@ -62,6 +61,7 @@ struct-like:
                 shapes.append(specs_to_shape(line.strip().split()))
         return shapes
 
+
 ## Assumptions
 
 C++ isn't Python, so we're making a couple of assumptions to see if the same patterns work in Python.
@@ -73,4 +73,4 @@ Also, Python is interpreted while C++ is compiled. We expect the struct-like cod
 
 ## Finidings
 Muratori's optimizations don't translate to Python. In fact, the struct-like version runs slower.
->>>>>>> Stashed changes
+

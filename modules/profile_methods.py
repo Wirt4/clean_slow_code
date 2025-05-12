@@ -1,5 +1,5 @@
-from modules.random_shapes import random_shape_oop, random_shape_struct
 from modules.oop import total_area_oop, total_corner_weighted_areas_oop
+from modules.random_shapes import random_shape_oop, random_shape_struct
 from modules.struct import total_area_struct, total_corner_weighted_area_struct
 
 shape_list_size: int = 100000
