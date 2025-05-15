@@ -5,7 +5,7 @@ Structuring operations based on lookup tables and switch-like blocks will be 2 t
 
 Casey Muratori's C++ demonstration claims a 10x speed improvement when ditching polymorphism and other 'Clean Code' practices. If polymorphism or Clean Code are inherently poor concepts, then there should be a similar(if not as dramatic) difference in benchmark performance when applied to a different language, even a high-level scripting language like Python.
 
-The struct is more performant than the OOP approach, but by a much slimmer margin than expected.
+What's expected is that the struct will still be more performant than the object-oriented version, but by a slimmer margin.
 
 ## Procedure
 There are two scripts:`class_hiearcy.py` and `struct_like.py`. Each reads a list of shape types and dimensions, calculates the sum of the total area, and the sum of the total corner weighted area.
@@ -74,3 +74,10 @@ Also, Python is interpreted while C++ is compiled. We expect the struct-like cod
 ## Finidings
 Muratori's optimizations don't translate to Python. In fact, the struct-like version runs slower.
 
+A benchmark from the class hierarchy version:
+    `11008982 function calls in 2.453 seconds`
+
+A benchmark from the struct-like (optimized) version:
+    `16009230 function calls (16009226 primitive calls) in 2.915 seconds`
+
+So the optimized version is actually 10% _slower_ (at least as far as Python goes).

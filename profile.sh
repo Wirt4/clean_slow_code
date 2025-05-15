@@ -8,18 +8,18 @@ fi
 
 # Extract script base name and remaining arguments
 BASENAME="$1"
-SCRIPT="${BASENAME}.py"
+SCRIPT="implementations/${BASENAME}.py"
 shift
 SCRIPT_ARGS="$@"
 
 # Check if the Python script exists
 if [ ! -f "$SCRIPT" ]; then
-  echo "Error: '$SCRIPT' does not exist in the current directory."
+  echo "Error: '$SCRIPT' does not exist."
   exit 1
 fi
 
 # Output profile file
-PROFILE_OUTPUT="${BASENAME}_output.prof"
+PROFILE_OUTPUT="profiles/${BASENAME}_output.prof"
 
 # Step 1: Run cProfile and save to .prof file
 python -m cProfile -o "$PROFILE_OUTPUT" "$SCRIPT" $SCRIPT_ARGS
